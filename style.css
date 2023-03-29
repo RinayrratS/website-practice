@@ -11,10 +11,29 @@
     position: relative;
 }
 .navbar{
+    /*위에 밑줄*/
     width: 100%;
     height: 60px;
     border-bottom: 1px solid #b7e7f6;
 }
 .nav{
+    /*위의 박스인 듯*/
+    width: 80%;
+    margin: 20px auto 0;
+/*    3개일 때 위 가로(auto) 아래 margin*/
+    display: flex;
+    /*display-inside 내부 디스플레이 유형, 콘텐츠 서식과 배치방법*/
+    /*flex는 마치 block처럼 행동하게 함-flexbox model*/
+    text-align:center;
+    position: sticky;
+/*    (스크롤 시)내릴경우 위의 화면에 붙어서 따라 내려옴*/
+    z-index: 2;
+/*    여러 요소가 겹쳐있을 때의 위치 우선순위 z축 위 아래*/
 
+}
+.logo{
+    flex-basis: 15%;
+}
+.logo img{
+    width: 100px;
 }

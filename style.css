@@ -13,10 +13,10 @@
 .navbar{
     /*위에 밑줄*/
     width: 100%;
-    height: 60px;
+    /*height: 60px;*/
     border-bottom: 1px solid #b7e7f6;
 }
-.nav{
+nav{
     /*위의 박스인 듯*/
     width: 80%;
     margin: 20px auto 0;
@@ -24,7 +24,10 @@
     display: flex;
     /*display-inside 내부 디스플레이 유형, 콘텐츠 서식과 배치방법*/
     /*flex는 마치 block처럼 행동하게 함-flexbox model*/
-    text-align:center;
+    align-items: center;
+    /*위 아래 중앙 배치*/
+    /*text-align:center;
+    텍스트 중앙 정렬*/
     position: sticky;
 /*    (스크롤 시)내릴경우 위의 화면에 붙어서 따라 내려옴*/
     z-index: 2;
@@ -33,7 +36,180 @@
 }
 .logo{
     flex-basis: 15%;
+/*    로고에 할당되는 넓이*/
 }
 .logo img{
     width: 100px;
+}
+.nav-link{
+    flex: 1;
+    /*    홈 메뉴 가운데에 위치, logo의 flex-basis로 인해 밀려남, flex는 할당되는 최대 넓이*/
+    text-align:center;
+}
+.nav-link ul li{
+    /*홈 메뉴 글자 배치*/
+    display: inline-block;
+    /*위 아래가 아니라 오른쪽으로 배치*/
+    list-style: none;
+    /*Home Blog 등 앞에 점 없애기*/
+    padding: 15px 5px;
+    /*줄과 글자 간격, 글자와 밑줄 사이 간격이 생김, 2개일때 15는 위아래 5는 왼오*/
+    margin: 0 25px;
+    /*줄 밖 간격, 2개 일때 0위아래, 15왼오*/
+    position: relative;
+}
+.nav-link ul li a{
+    /*Home 색 흰색*/
+    text-decoration: none;
+    /*밑 줄 없애기*/
+    color: #b7e7f6;
+}
+.nav-link ul li::after{
+/*장식적 요소 추가할 때 after, li 하고 나서 실행하라는 뜻인듯*/
+/*    메뉴 아래의 강조 흰색 밑줄*/
+    content: '';
+    width: 100%;
+    height: 3px;
+    background: transparent;
+    /*transparent 투명한 none과 비슷, 밑줄이 안보이게 됨*/
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.nav-link ul li:hover::after{
+/*    hover 사용자가 포인팅 장치를 이용해 상호작용 중인 요소, 올라가있다*/
+    background: #fff;
+/*    마우스 위에 올리면 흰색밑줄 나타남*/
+}
+.active::after{
+    /*현재 홈에만 active 들어가있음*/
+    background: #fff !important;
+    /* css는 같은 속성을 여러번 정의하면 뒤에껄로 적용,!important이면 나중값이 적용되지 않음*/
+}
+.menu-icon{
+    flex-basis: 15%;
+/*    오른쪽 두 줄 자리차지 15%*/
+}
+.menu-icon img{
+    width: 35px;
+/*    오른쪽 두줄 크기*/
+    float: right;
+/*    블록의 우측에 배치됨*/
+}
+.content{
+    /*소셜이모티콘 위치*/
+    width: 300px;
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    /*박스 왼쪽 기준 50% 인듯*/
+    transform: translateX(-50%);
+    /*x축 방향 왼쪽으로 박스의 50%, 그러면 내용까지 중앙 정렬인듯*/
+    text-align: center;
+    /*박스의 중앙에 내용 위치*/
+    z-index: 2;
+}
+.social-icons img{
+    width: 18px;
+    /*소셜 임티 크기*/
+    margin: 0 10px;
+    /*소셜 임티 간격*/
+    cursor: pointer;
+/*    마우스 올리면 클릭 커서로 바뀜*/
+}
+.search-box{
+    margin-top: 20px;
+    border: 1px solid #b7e7f6;
+    /*검색창 외부 하얀 경계*/
+    border-radius: 30px;
+    /*경계 둥글리기 round*/
+    display: flex;
+    /*가로축을 동일한 간격을 줌, 왼쪽과 오른쪽은 양 모서리에 붙음*/
+    align-items: center;
+    background: linear-gradient(rgba(255,255,255,.2),rgba(255,255,255,0));
+}
+.search-box input{
+    /*search box 내부의 입력 박스*/
+    width: 100%;
+    /*가로길이,넓이, 돋보기 임티가 뒤쪽으로 밀려남*/
+    padding: 7px 15px;
+    border-radius: 30px;
+    border: 0;
+    outline: none;
+    /*클릭했을 때 생기는 경계 없앰*/
+    background: transparent;
+/*    입력부분 원래 배경 흰색인데 투명화*/
+    color: #b7e7f6;
+/*    입력 내용 색 바꾸기*/
+}
+::placeholder{
+    color: #b7e7f6;
+/*    search box 내부에 입력 전에 있는 글자 색*/
+}
+.search-box img{
+    width: 20px;
+    margin: 5px 10px;
+/*    돋보기 간격*/
+}
+#clouds{
+    /*배경 구름*/
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -100px;
+    animation: clouds 5s linear infinite;
+}
+@keyframes clouds {
+    0%{
+        top: -100px;
+    }
+    20%{
+        top: 100px;
+    }
+    80%{
+        top: 100px;
+    }
+    100%{
+        top: -100px;
+    }
+}
+
+#airplane{
+    width: 200px;
+    position: absolute;
+    top: 180px;
+    left: 250px;
+    z-index: 2;
+/*    z-index 낮을수록 밑에 가고 auto로 하면 숫자로 설정한거 밑으로 가는 듯*/
+}
+#hotairballoon{
+    /*열기구가 분포할 박스 크기*/
+    height: 400px;
+    width: 700px;
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.balloon1{
+    width: 150px;
+    /*열기구 크기*/
+    opacity: 0.4;
+/*    opacity 불투명도, 낮을수록 흐림*/
+}
+.balloon2{
+    width: 350px;
+}
+.balloon3{
+    width: 150px;
+    opacity: 0.5;
+}
+#myImg{
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
 }

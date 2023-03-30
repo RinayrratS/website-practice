@@ -1,5 +1,7 @@
+<!--<img> 태그에 alt값 넣어줘야 함, 이미지 깨져도 뭔 지 알수 있도록. title 넣으면 이미지 위에 마우스 올렸을 때 글자 뜸-->
+
 <!doctype html>
-<html>
+<html lang="en">
 <head>
     <title>Animation - Easy Tutorials</title>
     <link rel="stylesheet" href="style.css">
@@ -52,6 +54,32 @@
 
         <img src="images/pause.png" id="myImg">
     </div>
+
+<script>
+var myImg = document.getElementById("myImg");
+
+myImg.onclick = function () {
+    if(clouds.style.webkitAnimationPlayState == "paused")
+        // cloud 멈춰있으면 즉, 멈춰있을 때 누르면 실행
+        {
+        clouds.style.webkitAnimationPlayState = "running"
+        airplane.style.webkitAnimationPlayState = "running"
+        hotairballoon.style.webkitAnimationPlayState = "running"
+        myImg.src='images/pause.png';
+    }
+    else{
+        // // cloud 멈춰 있지 않으면 즉, 움직일 때 누르면 멈춤
+        clouds.style.webkitAnimationPlayState = "paused"
+        airplane.style.webkitAnimationPlayState = "paused"
+        hotairballoon.style.webkitAnimationPlayState = "paused"
+        myImg.src='images/play.png';
+    }
+}
+// =,==,===개수가 중요했음
+// = 대입연산자 왼쪽 값을 오른쪽에 대입
+// == equal operator 같은지 다른지 비교해서 true false
+// === strict equal operator, data type도 동일해야함, 같으면 true 다르면 false
+</script>
 
 </body>
 
